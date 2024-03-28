@@ -1,7 +1,6 @@
 package com.oneotrix.gosporttest.view.features.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -9,7 +8,7 @@ import com.oneotrix.gosporttest.App
 import com.oneotrix.gosporttest.databinding.FragmentMainBinding
 import com.oneotrix.gosporttest.view.BaseFragment
 import com.oneotrix.gosporttest.view.features.main.ui.recycler.banners.AdapterBanners
-import com.oneotrix.gosporttest.view.features.main.ui.recycler.categories.AdapterFilters
+import com.oneotrix.gosporttest.view.features.main.ui.recycler.categories.AdapterCategory
 import com.oneotrix.gosporttest.view.features.main.ui.recycler.meals.AdapterMeals
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -25,8 +24,10 @@ class MainFragment: BaseFragment<FragmentMainBinding>(FragmentMainBinding::infla
         AdapterBanners(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))
     }
 
-    private val adapterFilters by lazy {
-        AdapterFilters(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))
+    private val adapterCategory by lazy {
+        AdapterCategory{ category ->
+            viewModel.checkCategory(category)
+        }
     }
 
     @Inject
@@ -54,6 +55,7 @@ class MainFragment: BaseFragment<FragmentMainBinding>(FragmentMainBinding::infla
         viewModel.data
             .onEach {
                 adapterMeals.submitList(it.meals)
+                adapterCategory.submitList(it.categories)
             }
             .launchIn(lifecycleScope)
     }
@@ -61,7 +63,7 @@ class MainFragment: BaseFragment<FragmentMainBinding>(FragmentMainBinding::infla
     private fun setAdapters() {
         binding.rvMeals.adapter = adapterMeals
         binding.rvBanners.adapter = adapterBanners
-        binding.rvFilters.adapter = adapterFilters
+        binding.rvFilters.adapter = adapterCategory
     }
 
 

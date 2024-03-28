@@ -1,11 +1,12 @@
 package com.oneotrix.gosporttest.domain.repository
 
-import com.oneotrix.gosporttest.domain.models.BaseDomainModel
-import com.oneotrix.gosporttest.domain.models.MealsModel
+import com.oneotrix.gosporttest.data.local.room.category.Category
+import com.oneotrix.gosporttest.data.local.room.meal.Meal
+import kotlinx.coroutines.flow.Flow
 
 interface IProductsRepository {
 
-    suspend fun getMealsList() : BaseDomainModel<MealsModel>
-    suspend fun getCategoriesList()
+    suspend fun getMealsList() : Flow<List<Meal>>
+    suspend fun getCategoriesList() : Flow<List<Category>>
 
 }

@@ -3,8 +3,8 @@ package com.oneotrix.gosporttest.data.source
 import com.oneotrix.gosporttest.data.network.Api
 import com.oneotrix.gosporttest.data.network.response.BaseModelResponse
 import com.oneotrix.gosporttest.data.network.response.BaseModelResponse.*
+import com.oneotrix.gosporttest.data.network.response.GetCategoriesResponse
 import com.oneotrix.gosporttest.data.network.response.GetMealsResponse
-import retrofit2.HttpException
 import javax.inject.Inject
 
 class NetworkDataSource @Inject constructor(
@@ -15,7 +15,16 @@ class NetworkDataSource @Inject constructor(
         return try {
             val data = apiService.getMealsList()
             Success(data)
-        } catch (e: HttpException) {
+        } catch (e: Exception) {
+            Error(e.message.orEmpty())
+        }
+    }
+
+    suspend fun getCategoriesList() : BaseModelResponse<GetCategoriesResponse> {
+        return try {
+            val data = apiService.getCategories()
+            Success(data)
+        } catch (e: Exception) {
             Error(e.message.orEmpty())
         }
     }

@@ -61,6 +61,7 @@ dependencies {
 
     // Room2
     implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
     kapt(libs.room.compiler)
 
     // Dagger2

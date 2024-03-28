@@ -2,7 +2,6 @@ package com.oneotrix.gosporttest.view.features.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.oneotrix.gosporttest.domain.models.BaseDomainModel.*
 import com.oneotrix.gosporttest.domain.usecase.UseCaseGetApplyFilter
 import com.oneotrix.gosporttest.domain.usecase.UseCaseGetCategories
 import com.oneotrix.gosporttest.domain.usecase.UseCaseGetMeals
@@ -28,32 +27,49 @@ class MainViewModel(
     }
 
     private fun fetchData() {
+        getMeals()
         getCategories()
     }
 
-    private fun getCategories() = viewModelScope.launch {
-        val dataMeals = useCaseGetMeals.fetch()
-
-        when(dataMeals) {
-            is Success -> {
-                val meals = dataMeals.data?.meals
-                    ?.map { MapperView.mapToMealModel(it) }
-                    ?: emptyList()
-
-                _data.value = UiState(meals = meals)
-            }
-
-            is Error -> {
-                _data.value = UiState(meals = emptyList())
-            }
+    private fun getMeals() = viewModelScope.launch {
+        useCaseGetMeals.fetch().collect { list ->
+            _data.value = UiState(
+                meals = list.map { MapperView.mapMeal(it) },
+                categories = _data.value.categories,
+            )
         }
     }
 
+    private fun getCategories() = viewModelScope.launch {
+        useCaseGetCategories.fetch().collect { list ->
+            _data.value = UiState(
+                meals = _data.value.meals,
+                categories = list.map { MapperView.mapCategory(it) },
+            )
+        }
+    }
 
+    fun checkCategory(category: CategoryModel) {
+        val categories =_data.value.categories.map {
+            when(category.isChecked) {
+                true -> {
+                    it.copy(isChecked = false)
+                }
+                false -> {
+                    if (it == category) {
+                        it.copy(isChecked = true)
+                    } else {
+                        it.copy(isChecked = false)
+                    }
+                }
+            }
+        }
+
+        _data.value = _data.value.copy(categories = categories)
+    }
 
     data class UiState(
         val categories: List<CategoryModel> = emptyList(),
         val meals: List<MealModel> = emptyList()
     )
-
 }
