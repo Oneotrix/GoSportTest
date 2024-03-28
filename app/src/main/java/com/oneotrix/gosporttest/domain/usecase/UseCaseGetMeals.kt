@@ -5,11 +5,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class UseCaseGetCategories @Inject constructor(
+class UseCaseGetMeals @Inject constructor(
     private val repository: IProductsRepository
 )  {
 
     suspend fun fetch() = withContext(Dispatchers.IO) {
-        return@withContext repository.getCategoriesList()
+        return@withContext repository.getMealsList()
     }
 }

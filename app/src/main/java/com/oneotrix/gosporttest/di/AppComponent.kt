@@ -7,11 +7,15 @@ import dagger.Component
     modules = [
         ModuleRetrofit::class,
         OkHttpModule::class,
+        AppSubcomponents::class,
+        RepositoryModule::class,
     ]
 )
 interface AppComponent {
 
     fun provideApiService() : Api
+
+    fun provideMainFragmentComponentBuilder() : MainFragmentComponent.Builder
 
     @Component.Builder
     interface Builder {
