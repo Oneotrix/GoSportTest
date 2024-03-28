@@ -72,4 +72,7 @@ dependencies {
 
     // Coroutines
     implementation(libs.coroutines)
+
+    // Serialization
+    implementation(libs.kotlinx.serializarion)
 }
