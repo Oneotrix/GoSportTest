@@ -8,10 +8,10 @@ data class GetMealsResponse(
 ) {
     @Serializable
     data class Meal(
-        var idMeal: String? = null,
+        var idMeal: String,
         var strMeal: String? = null,
         var strDrinkAlternate: String? = null,
-        var strCategory: String? = null,
+        var strCategory: String,
         var strArea: String? = null,
         var strInstructions: String? = null,
         var strMealThumb: String? = null,

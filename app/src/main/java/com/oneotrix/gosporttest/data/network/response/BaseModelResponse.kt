@@ -9,5 +9,4 @@ sealed class BaseModelResponse<T>(
 
     class Error<T>(message: String?, data: T? = null) : BaseModelResponse<T>(data, message)
 
-
 }

@@ -1,8 +1,8 @@
 package com.oneotrix.gosporttest
 
 import android.app.Application
-import com.oneotrix.gosporttest.di.AppComponent
-import com.oneotrix.gosporttest.di.DaggerAppComponent
+import com.oneotrix.gosporttest.di.components.AppComponent
+import com.oneotrix.gosporttest.di.components.DaggerAppComponent
 
 class App: Application() {
 
@@ -10,6 +10,7 @@ class App: Application() {
         super.onCreate()
 
         appComponent = DaggerAppComponent.builder()
+            .context(this@App)
             .build()
 
     }

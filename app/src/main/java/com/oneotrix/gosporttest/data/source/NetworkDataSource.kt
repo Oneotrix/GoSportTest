@@ -8,7 +8,7 @@ import retrofit2.HttpException
 import javax.inject.Inject
 
 class NetworkDataSource @Inject constructor(
-    private val apiService: Api
+    private val apiService: Api,
 ) {
 
     suspend fun getMealsList() : BaseModelResponse<GetMealsResponse> {
@@ -19,5 +19,6 @@ class NetworkDataSource @Inject constructor(
             Error(e.message.orEmpty())
         }
     }
+
 
 }

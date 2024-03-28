@@ -1,4 +1,4 @@
-package com.oneotrix.gosporttest.di
+package com.oneotrix.gosporttest.di.modules
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.oneotrix.gosporttest.data.network.Api

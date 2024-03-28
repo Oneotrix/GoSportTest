@@ -12,4 +12,5 @@ class UseCaseGetMeals @Inject constructor(
     suspend fun fetch() = withContext(Dispatchers.IO) {
         return@withContext repository.getMealsList()
     }
+
 }

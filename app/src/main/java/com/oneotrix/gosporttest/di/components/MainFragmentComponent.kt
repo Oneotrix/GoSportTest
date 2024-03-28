@@ -1,4 +1,4 @@
-package com.oneotrix.gosporttest.di
+package com.oneotrix.gosporttest.di.components
 
 import com.oneotrix.gosporttest.view.features.main.MainFragment
 import dagger.Subcomponent

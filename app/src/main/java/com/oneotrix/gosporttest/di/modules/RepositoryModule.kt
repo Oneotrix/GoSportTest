@@ -1,4 +1,4 @@
-package com.oneotrix.gosporttest.di
+package com.oneotrix.gosporttest.di.modules
 
 import com.oneotrix.gosporttest.data.ProductsRepository
 import com.oneotrix.gosporttest.data.source.NetworkDataSource
