@@ -1,6 +1,6 @@
 [versions]
 agp = "8.3.1"
-kotlin = "1.9.0"
+kotlin = "1.9.22"
 coreKtx = "1.12.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
@@ -11,6 +11,22 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
+
+retrofit = "2.9.0" #https://github.com/square/retrofit/tags
+okhttp = "4.11.0"
+retrofit-kotlinx-serialization = "1.0.0"
+
+# Dagger2
+dagger = "2.50"
+
+#Picasso
+picasso = "2.8"
+
+#Room
+room = "2.6.1"
+
+# Coroutines
+coroutines = "1.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,7 +40,29 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-kotlinx-serialization = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit-kotlinx-serialization"}
+okhttp-loggingInterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+
+# DI
+dagger-dagger = { module = "com.google.dagger:dagger", version.ref = "dagger"}
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+
+#Images
+picasso = {module = "com.squareup.picasso:picasso", version.ref = "picasso"}
+
+#Database
+room-runtime = {module = "androidx.room:room-runtime", version.ref = "room"}
+room-compiler = {module = "androidx.room:room-compiler", version.ref = "room"}
+
+#Asynchronously
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines"}
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-kapt = {id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin"}
 

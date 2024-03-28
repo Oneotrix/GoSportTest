@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -50,4 +52,24 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Retrofit & OkHttp
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.loggingInterceptor)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.kotlinx.serialization)
+
+    // Room2
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
+
+    // Dagger2
+    implementation(libs.dagger.dagger)
+    kapt(libs.dagger.compiler)
+
+    // Picasso
+    implementation(libs.picasso)
+
+    // Coroutines
+    implementation(libs.coroutines)
 }

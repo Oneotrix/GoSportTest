@@ -125,7 +125,6 @@
             >
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tbMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Меню"
@@ -133,7 +132,6 @@
                     />
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tbProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Профиль"
@@ -141,7 +139,6 @@
                     />
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tbGarbage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Корзина"
@@ -149,6 +146,8 @@
                     />
 
         </com.google.android.material.tabs.TabLayout>
+
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
