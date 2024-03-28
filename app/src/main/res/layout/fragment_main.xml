@@ -1,6 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white_fbfbfb"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="com.oneotrix.gosporttest.view.features.main.ui.behaviors.AppBarBehavior"
+            android:elevation="10dp"
+            >
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/tbHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:layout_scrollFlags="noScroll"
+                    >
+                        <LinearLayout
+                            android:id="@+id/vgCity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvCity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Москва"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/btnSelectCity"
+                                    style="?attr/materialIconButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:icon="@drawable/ic_arrow_down"
+                                    />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnQrScanner"
+                            style="?attr/materialIconButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:icon="@drawable/ic_qr_code"
+                            android:layout_gravity="center_vertical|end"
+                            />
+
+
+                </com.google.android.material.appbar.MaterialToolbar>
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/tbBanners"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    android:orientation="horizontal"
+                    >
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvBanners"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_banner"
+                            >
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+
+                </com.google.android.material.appbar.MaterialToolbar>
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/tbFilters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:layout_scrollFlags="noScroll"
+                    >
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvFilters"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="10"
+                            tools:listitem="@layout/item_filter"
+                            />
+
+                </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMeals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_product"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/vgTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="fixed"
+            app:tabIndicatorHeight="0dp"
+            android:layout_gravity="bottom"
+            >
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tbMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Меню"
+                    android:icon="@drawable/ic_menu"
+                    />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tbProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Профиль"
+                    android:icon="@drawable/ic_union"
+                    />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tbGarbage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Корзина"
+                    android:icon="@drawable/ic_garbage"
+                    />
+
+        </com.google.android.material.tabs.TabLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
