@@ -10,7 +10,7 @@ class UseCaseGetApplyCategory @Inject constructor(
 ) {
 
     suspend fun apply(category: String = "") = withContext(Dispatchers.IO) {
-        repository.getMealsByCategory(category)
+        return@withContext repository.getMealsByCategory(category)
     }
 
 }

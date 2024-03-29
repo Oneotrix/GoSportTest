@@ -30,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ветчина и грибы"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             />
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:text="Ветчина,шампиньоны, увеличинная порция моцареллы, томатный соус"
             android:textSize="14sp"
+            android:textColor="@color/onSurface"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="10dp"
             />
@@ -56,6 +58,7 @@
             android:text="от 345 р"
             android:textColor="#FD3A69"
             app:chipStrokeColor="#FD3A69"
+            app:chipBackgroundColor="@color/white"
             />
 
     </LinearLayout>

@@ -4,22 +4,21 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white_fbfbfb"
+    android:background="@color/white_background"
     >
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             app:layout_behavior="com.oneotrix.gosporttest.view.features.main.ui.behaviors.AppBarBehavior"
-            android:elevation="10dp"
             >
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/tbHead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     app:layout_scrollFlags="noScroll"
                     >
                         <LinearLayout
@@ -40,7 +39,7 @@
 
                                 <Button
                                     android:id="@+id/btnSelectCity"
-                                    style="?attr/materialIconButtonStyle"
+                                    style="@style/ButtonHead"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     app:icon="@drawable/ic_arrow_down"
@@ -64,7 +63,6 @@
                     android:id="@+id/tbBanners"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     app:layout_scrollFlags="scroll|enterAlways"
                     android:orientation="horizontal"
                     >
@@ -87,7 +85,6 @@
                     android:id="@+id/tbFilters"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     app:layout_scrollFlags="noScroll"
                     >
 
@@ -110,10 +107,9 @@
             android:id="@+id/rvMeals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/item_product"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            />
+            tools:listitem="@layout/item_product" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/vgTabLayout"

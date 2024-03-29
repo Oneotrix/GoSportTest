@@ -2,7 +2,6 @@ package com.oneotrix.gosporttest.di.modules
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.oneotrix.gosporttest.data.local.room.AppDatabase
 import dagger.Module
 import dagger.Provides

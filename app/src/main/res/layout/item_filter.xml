@@ -2,20 +2,22 @@
 <com.google.android.material.chip.Chip xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/chpFilter"
     android:layout_width="wrap_content"
-    android:layout_height="64dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:text="@string/app_name"
+    android:text="Пицца"
     android:textSize="16sp"
-    app:textStartPadding="24dp"
-    app:textEndPadding="24dp"
-    style="@style/Widget.Material3.Chip.Filter"
-    android:textStyle="bold"
+    style="@style/Widget.Material3.Chip.Filter.Elevated"
+    app:textStartPadding="18dp"
+    app:textEndPadding="18dp"
     app:chipStrokeWidth="0dp"
-    app:chipBackgroundColor="#33FD3A69"
-    android:textColor="#FD3A69"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
+    app:chipBackgroundColor="@color/chip_background"
+    android:textColor="@color/chip_text"
+    android:checked="false"
+    app:checkedIconVisible="false"
     >
+
 
 
 </com.google.android.material.chip.Chip>
