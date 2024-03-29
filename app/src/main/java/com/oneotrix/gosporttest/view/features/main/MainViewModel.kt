@@ -2,7 +2,7 @@ package com.oneotrix.gosporttest.view.features.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.oneotrix.gosporttest.domain.usecase.UseCaseGetApplyFilter
+import com.oneotrix.gosporttest.domain.usecase.UseCaseGetApplyCategory
 import com.oneotrix.gosporttest.domain.usecase.UseCaseGetCategories
 import com.oneotrix.gosporttest.domain.usecase.UseCaseGetMeals
 import com.oneotrix.gosporttest.view.features.main.models.CategoryModel
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    private val useCaseGetApplyFilter: UseCaseGetApplyFilter,
+    private val useCaseGetApplyCategory: UseCaseGetApplyCategory,
     private val useCaseGetCategories: UseCaseGetCategories,
     private val useCaseGetMeals: UseCaseGetMeals,
 ): ViewModel() {
@@ -49,7 +49,30 @@ class MainViewModel(
         }
     }
 
-    fun checkCategory(category: CategoryModel) {
+    fun checkCategory(category: CategoryModel) = viewModelScope.launch {
+        val categories = updateCategoriesState(category)
+
+        if (category.isChecked) {
+            useCaseGetApplyCategory.apply().collect { list ->
+                _data.value = UiState(
+                    meals = list.map { MapperView.mapMeal(it) },
+                    categories = categories
+                )
+            }
+        }
+        else {
+            useCaseGetApplyCategory.apply(category.title).collect { list ->
+                _data.value = UiState(
+                    meals = list.map { MapperView.mapMeal(it) },
+                    categories = categories
+                )
+            }
+        }
+
+    //_data.value = _data.value.copy(categories = categories)
+    }
+
+    private fun updateCategoriesState(category: CategoryModel): List<CategoryModel> {
         val categories =_data.value.categories.map {
             when(category.isChecked) {
                 true -> {
@@ -65,7 +88,7 @@ class MainViewModel(
             }
         }
 
-        _data.value = _data.value.copy(categories = categories)
+        return categories
     }
 
     data class UiState(

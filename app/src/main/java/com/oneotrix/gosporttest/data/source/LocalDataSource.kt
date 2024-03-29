@@ -30,4 +30,6 @@ class LocalDataSource @Inject constructor(
         app.categoryDao().insertAll(categories)
     }
 
+    suspend fun getMealsByCategory(category: String) = app.mealDao().filterByCategory(category)
+
 }

@@ -9,6 +9,7 @@ import com.oneotrix.gosporttest.data.source.LocalDataSource
 import com.oneotrix.gosporttest.data.source.NetworkDataSource
 import com.oneotrix.gosporttest.domain.repository.IProductsRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class ProductsRepository @Inject constructor(
@@ -31,8 +32,19 @@ class ProductsRepository @Inject constructor(
         }
     }
 
+    override suspend fun getMealsByCategory(category: String): Flow<List<Meal>> {
+        return try {
+            if (category.isNotBlank()) localDataSource.getMealsByCategory(category)
+            else localDataSource.getAllMeals()
+        } catch (e: Exception) {
+            flow {
+                emit(emptyList())
+            }
+        }
+    }
+
     override suspend fun getCategoriesList(): Flow<List<Category>> {
-        
+
         val response = networkDataSource.getCategoriesList()
 
         return when(response) {
